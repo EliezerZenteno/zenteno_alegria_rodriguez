@@ -9,3 +9,5 @@ def sobre_nosotros(request):
 def promociones(request):
     return render(request, 'core/promociones.html')
 
+def recetas(request):
+    return render(request, 'core/recetas.html')
