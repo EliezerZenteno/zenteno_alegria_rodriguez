@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Promociones | FondaApp</title>
+	<style>
+		body {
+			margin: 0;
+			font-family: Arial, sans-serif;
+			background: #212529;
+			color: #fff;
+		}
+		.navbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			background: linear-gradient(to bottom, #212529 80%, #212529 100%);
+			padding: 10px 40px;
+		}
+		.navbar .logo {
+			font-size: 2rem;
+			font-weight: bold;
+			color: #fff;
+			letter-spacing: 1px;
+		}
+		.navbar ul {
+			list-style: none;
+			display: flex;
+			margin: 0;
+			padding: 0;
+		}
+		.navbar ul li {
+			margin-left: 30px;
+		}
+		.navbar ul li a {
+			color: #bfc1c3;
+			text-decoration: none;
+			font-size: 1.1rem;
+			font-weight: 600;
+			transition: color 0.2s;
+			position: relative;
+		}
+		.navbar ul li a.active,
+		.navbar ul li a:hover {
+			color: #fff;
+		}
+		.navbar ul li a.active::after,
+		.navbar ul li a:hover::after {
+			content: '';
+			display: block;
+			margin: 4px auto 0;
+			width: 40px;
+			height: 4px;
+			background: #fff;
+			border-radius: 2px;
+		}
+		.promo-banner {
+			width: 100%;
+			height: 220px;
+			background: url('https://www.elhuaso.cl/wp-content/uploads/2022/09/fiestas-patrias-chile.jpg') center/cover no-repeat;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 40px;
+			border-radius: 10px;
+		}
+		.promo-banner-text {
+			background: rgba(33,37,41,0.7);
+			padding: 20px 40px;
+			border-radius: 10px;
+			font-size: 2rem;
+			font-weight: bold;
+			color: #fff;
+			text-shadow: 2px 2px 8px #000;
+		}
+		.promos {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 30px;
+			justify-content: center;
+			margin-bottom: 40px;
+		}
+		.promo-card {
+			background: #181a1b;
+			border-radius: 10px;
+			padding: 25px 20px;
+			width: 260px;
+			text-align: center;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.promo-card h5 {
+			margin: 10px 0 10px 0;
+			font-size: 1.3rem;
+			color: #fff;
+		}
+		.promo-card p {
+			color: #bfc1c3;
+			font-size: 1rem;
+		}
+		.btn-volver {
+			background: #fff;
+			color: #212529;
+			border: none;
+			padding: 10px 30px;
+			border-radius: 6px;
+			font-weight: bold;
+			font-size: 1.1rem;
+			cursor: pointer;
+			transition: background 0.2s, color 0.2s;
+		}
+		.btn-volver:hover {
+			background: #bfc1c3;
+			color: #212529;
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar">
+		<div class="logo">Cover</div>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/promociones/" class="active">Promociones</a></li>
+			<li><a href="/sobrenosotros/">Sobre Nosotros</a></li>
+		</ul>
+	</nav>
+	<div class="promo-banner">
+		<div class="promo-banner-text">
+			¡Aprovecha nuestras promociones exclusivas!
+		</div>
+	</div>
+	<h1 class="mb-4 text-center" style="text-align:center;">Promociones Especiales</h1>
+	<div class="promos">
+		<div class="promo-card">
+			<h5>2x1 en Menú del Día</h5>
+			<p>Ven con un amigo y paga solo un menú de lunes a viernes de 1pm a 3pm.</p>
+		</div>
+		<div class="promo-card">
+			<h5>Descuento Estudiantil</h5>
+			<p>Presenta tu credencial y obtén un 15% de descuento en tu consumo.</p>
+		</div>
+		<div class="promo-card">
+			<h5>Postre Gratis</h5>
+			<p>Por cada consumo mayor a $200, llévate un postre de cortesía.</p>
+		</div>
+	</div>
+	<div style="text-align:center; margin-bottom:40px;">
+		<a href="/" class="btn-volver">Volver al inicio</a>
+	</div>
+</body>
+</html>
