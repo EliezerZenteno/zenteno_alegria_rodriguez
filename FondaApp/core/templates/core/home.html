@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Inicio{% endblock %}</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #212529;
+            color: #fff;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(to bottom, #212529 80%, #212529 100%);
+            padding: 10px 40px;
+        }
+        .navbar .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar ul li {
+            margin-left: 30px;
+        }
+        .navbar ul li a {
+            color: #bfc1c3;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: color 0.2s;
+            position: relative;
+        }
+        .navbar ul li a.active,
+        .navbar ul li a:hover {
+            color: #fff;
+        }
+        .navbar ul li a.active::after,
+        .navbar ul li a:hover::after {
+            content: '';
+            display: block;
+            margin: 4px auto 0;
+            width: 40px;
+            height: 4px;
+            background: #fff;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Cover</div>
+        <ul>
+            <li><a href="/home/" class="active">Home</a></li>
+            <li><a href="/promociones/">Promociones</a></li>
+            <li><a href="/sobrenosotros/">Sobre Nosotros</a></li>
+        </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
