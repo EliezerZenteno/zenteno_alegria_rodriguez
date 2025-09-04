@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Inicio{% endblock %}</title>
+    {% block extra_css %}
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #212529;
+            color: #fff;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(to bottom, #212529 80%, #212529 100%);
+            padding: 10px 40px;
+        }
+        .navbar .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar ul li {
+            margin-left: 30px;
+        }
+        .navbar ul li a {
+            color: #bfc1c3;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: color 0.2s;
+            position: relative;
+        }
+        .navbar ul li a.active,
+        .navbar ul li a:hover {
+            color: #fff;
+        }
+        .navbar ul li a.active::after,
+        .navbar ul li a:hover::after {
+            content: '';
+            display: block;
+            margin: 4px auto 0;
+            width: 40px;
+            height: 4px;
+            background: #fff;
+            border-radius: 2px;
+        }
+        .banner {
+            width: 100%;
+            height: 300px;
+            background: url('https://www.elhuaso.cl/wp-content/uploads/2022/09/fiestas-patrias-chile.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            border-radius: 10px;
+        }
+        .banner-text {
+            background: rgba(33,37,41,0.7);
+            padding: 30px 50px;
+            border-radius: 10px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 8px #000;
+        }
+        .productos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .producto {
+            background: #181a1b;
+            border-radius: 10px;
+            padding: 20px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .producto img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .producto h3 {
+            margin: 10px 0 5px 0;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+        .producto p {
+            color: #bfc1c3;
+            font-size: 1rem;
+        }
+    </style>
+    {% endblock %}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">FondaApp</div>
+        <ul>
+            <li><a href="/" >Home</a></li>
+            <li><a href="/promociones/" class="active">Promociones</a></li>
+            <li><a href="/sobrenosotros/" >Sobre Nosotros</a></li>
+        </ul>
+    </nav>
+    {% block content %}
+    <div class="banner">
+        <div class="banner-text">
+            ¡Celebra las Fiestas Patrias con nosotros!
+        </div>
+    </div>
+
+    <div class="productos">
+        <div class="producto">
+            <img src="https://as2.ftcdn.net/v2/jpg/00/56/48/03/1000_F_56480342_VgvJbiq6g95rYlHU9ToxfYteIhchBitW.jpg" alt="Anticuchos">
+            <h3>Anticuchos</h3>
+            <p>Deliciosos anticuchos preparados a la parrilla.</p>
+        </div>
+        <div class="producto">
+            <img src="https://images.pexels.com/photos/33673326/pexels-photo-33673326.jpeg" alt="Empanadas">
+            <h3>Empanadas</h3>
+            <p>Empanadas tradicionales chilenas, rellenas de carne, huevo y aceituna.</p>
+        </div>
+        <div class="producto">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.hqp-FoEI2Fvylw0VCNOybgHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pajaritos">
+            <h3>Pajaritos</h3>
+            <p>Con huevo y con pancito amasado de las mejores madres o abuelas.</p>
+        </div>
+        <div class="producto">
+            <img src="https://www.fmdos.cl/wp-content/uploads/2016/09/sopaipillas-y-pebre.jpg" alt="Sopaipillas">
+            <h3>Sopaipillas</h3>
+            <p>Sopaipillas caseras, perfectas para acompañar con pebre</p>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

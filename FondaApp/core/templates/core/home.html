@@ -16,14 +16,17 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: linear-gradient(to bottom, #212529 80%, #212529 100%);
-            padding: 10px 40px;
+            padding: 18px 40px;
+            background: url('https://www.elhuaso.cl/wp-content/uploads/2022/09/fiestas-patrias-chile.jpg') center/cover no-repeat;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            border-bottom: 3px solid #e63946;
         }
         .navbar .logo {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: bold;
             color: #fff;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px #e63946, 0 0 10px #fff;
         }
         .navbar ul {
             list-style: none;
@@ -32,29 +35,33 @@
             padding: 0;
         }
         .navbar ul li {
-            margin-left: 30px;
+            margin-left: 35px;
         }
         .navbar ul li a {
-            color: #bfc1c3;
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: color 0.2s;
-            position: relative;
+            font-size: 1.15rem;
+            font-weight: 700;
+            padding: 8px 18px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(230,57,70,0.2);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .navbar ul li a.home-link {
+            background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
+            color: #fff;
+        }
+        .navbar ul li a.promociones-link {
+            background: linear-gradient(90deg, #43ea5e 0%, #2ecc40 100%);
+            color: #fff;
+        }
+        .navbar ul li a.sobrenosotros-link {
+            background: linear-gradient(90deg, #a67c52 0%, #8d5524 100%);
+            color: #fff;
         }
         .navbar ul li a.active,
         .navbar ul li a:hover {
-            color: #fff;
-        }
-        .navbar ul li a.active::after,
-        .navbar ul li a:hover::after {
-            content: '';
-            display: block;
-            margin: 4px auto 0;
-            width: 40px;
-            height: 4px;
-            background: #fff;
-            border-radius: 2px;
+            box-shadow: 0 4px 16px rgba(230,57,70,0.4);
+            opacity: 0.85;
         }
         .banner {
             width: 100%;
@@ -111,11 +118,11 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">Cover</div>
+        <div class="logo">FondaApp</div>
         <ul>
-            <li><a href="/" class="active">Home</a></li>
-            <li><a href="/promociones/">Promociones</a></li>
-            <li><a href="/sobrenosotros/">Sobre Nosotros</a></li>
+            <li><a href="/" class="home-link active">Home</a></li>
+            <li><a href="/promociones/" class="promociones-link">Promociones</a></li>
+            <li><a href="/sobrenosotros/" class="sobrenosotros-link">Sobre Nosotros</a></li>
         </ul>
     </nav>
     {% block content %}
