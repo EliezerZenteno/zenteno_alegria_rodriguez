@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros | FondaApp</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #212529;
+            color: #fff;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 40px;
+            background: url('https://www.elhuaso.cl/wp-content/uploads/2022/09/fiestas-patrias-chile.jpg') center/cover no-repeat;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            border-bottom: 3px solid #e63946;
+        }
+        .navbar .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px #e63946, 0 0 10px #fff;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar ul li {
+            margin-left: 35px;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            font-size: 1.15rem;
+            font-weight: 700;
+            padding: 8px 18px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(230,57,70,0.2);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .navbar ul li a.home-link {
+            background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
+            color: #fff;
+        }
+        .navbar ul li a.promociones-link {
+            background: linear-gradient(90deg, #43ea5e 0%, #2ecc40 100%);
+            color: #fff;
+        }
+        .navbar ul li a.sobrenosotros-link {
+            background: linear-gradient(90deg, #a67c52 0%, #8d5524 100%);
+            color: #fff;
+        }
+        .navbar ul li a.active,
+        .navbar ul li a:hover {
+            box-shadow: 0 4px 16px rgba(230,57,70,0.4);
+            opacity: 0.85;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #181a1b;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #fff; /* Cambiado de #d32f2f a blanco */
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 8px #fff, 0 0 10px #d32f2f44;
+        }
+        h2 {
+            color: #0d47a1;
+            margin-top: 30px;
+        }
+        p, li {
+            color: #bfc1c3;
+            font-size: 1.1rem;
+        }
+        .btn-volver {
+            background: #0d47a1;
+            color: #fff;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            display: inline-block;
+            margin-top: 30px;
+        }
+        .btn-volver:hover {
+            background: #d32f2f;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">FondaApp</div>
+        <ul>
+            <li><a href="/" class="home-link">Home</a></li>
+            <li><a href="/promociones/" class="promociones-link">Promociones</a></li>
+            <li><a href="/sobrenosotros/" class="sobrenosotros-link active">Sobre Nosotros</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Sobre Nosotros</h1>
+        <h2>¿Quiénes somos?</h2>
+        <p>
+            FondaApp es una empresa dedicada a celebrar y difundir la cultura chilena a través de la organización de fondas y eventos típicos. Desde nuestros inicios en 2010, hemos trabajado para ofrecer experiencias auténticas y memorables durante las Fiestas Patrias, reuniendo a familias y amigos en torno a la buena comida, música y tradiciones.
+        </p>
+        <h2>Nuestra Misión</h2>
+        <p>
+            Promover y preservar las tradiciones chilenas, brindando espacios de encuentro y alegría donde todos puedan disfrutar de la gastronomía y el folclore nacional.
+        </p>
+        <h2>Valores</h2>
+        <ul>
+            <li>Compromiso con la cultura y las raíces chilenas</li>
+            <li>Calidad y autenticidad en nuestros productos y servicios</li>
+            <li>Respeto y cercanía con nuestros clientes</li>
+            <li>Innovación en la organización de eventos</li>
+        </ul>
+        <h2>Contacto</h2>
+        <p>
+            ¿Quieres saber más o participar en nuestras fondas? Escríbenos a <a href="mailto:contacto@fondaapp.cl" style="color:#43ea5e;">contacto@fondaapp.cl</a> o síguenos en nuestras redes sociales.
+        </p>
+        <a href="/" class="btn-volver">Volver al inicio</a>
+    </div>
+</body>
+</html>
