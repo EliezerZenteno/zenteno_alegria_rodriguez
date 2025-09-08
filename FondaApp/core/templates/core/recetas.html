@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recetas y Consejos | FondaApp</title>
+    <!-- Fuentes Bebas Neue y Montserrat -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500&display=swap');
+        /* Estilos generales */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background: #212529;
             color: #fff;
         }
+        /* Barra de navegación con imagen de fondo */
         .navbar {
             display: flex;
             align-items: center;
@@ -46,6 +49,7 @@
             box-shadow: 0 2px 8px rgba(230,57,70,0.2);
             transition: background 0.2s, color 0.2s, box-shadow 0.2s;
         }
+        /* Colores personalizados para cada sección del menú */
         .navbar ul li a.home-link {
             background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
             color: #fff;
@@ -67,6 +71,7 @@
             box-shadow: 0 4px 16px rgba(230,57,70,0.4);
             opacity: 0.85;
         }
+        /* Banner principal de recetas */
         .banner {
             width: 100%;
             height: 250px;
@@ -86,6 +91,7 @@
             color: #fff;
             text-shadow: 2px 2px 8px #000;
         }
+        /* Sección de recetas */
         .recetas-section {
             max-width: 1100px;
             margin: 0 auto 40px auto;
@@ -104,6 +110,7 @@
             margin-bottom: 25px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
+        /* Títulos de recetas y consejos */
         .receta h3,
         .consejos-title,
         .recetas-title {
@@ -115,6 +122,7 @@
             font-weight: normal;
             margin-bottom: 10px;
         }
+        /* Listas de ingredientes y pasos con fuente Montserrat */
         .receta ul,
         .receta ol,
         .consejos-list ul {
@@ -138,6 +146,7 @@
             color: #fff !important;
             text-shadow: 2px 2px 8px #e63946, 0 0 10px #fff;
         }
+        /* Sección de consejos */
         .consejos-section {
             max-width: 1100px;
             margin: 0 auto 40px auto;
@@ -156,6 +165,7 @@
             color: #bfc1c3;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
+        /* Pie de página */
         .footer {
             width: 100%;
             border-top: 1px solid #444;
@@ -196,6 +206,7 @@
         .footer-right a:hover i {
             color: #fff;
         }
+        /* Botón para volver al inicio */
         .btn-volver {
             display: inline-block;
             background: #e63946;
@@ -213,9 +224,11 @@
             color: #fff;
         }
     </style>
+    <!-- Iconos Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Barra de navegación -->
     <nav class="navbar">
         <div class="logo">FondaApp</div>
         <ul>
@@ -225,14 +238,19 @@
             <li><a href="/recetas/" class="recetas-link active">Recetas</a></li>
         </ul>
     </nav>
+    <!-- Banner principal -->
     <div class="banner">
         <div class="banner-text">
             Recetas y Consejos para Fiestas Patrias
         </div>
     </div>
-
+    <!-- Sección de recetas, bloques dinámicos -->
     <div class="recetas-section">
+        {% block recetas_titulo %}
         <div class="recetas-title">Recetas típicas chilenas</div>
+        {% endblock %}
+        {% block recetas_lista %}
+        <!-- Receta 1 -->
         <div class="receta">
             <h3>Empanadas de Pino</h3>
             <ul>
@@ -248,6 +266,7 @@
                 <li>Hornea hasta dorar.</li>
             </ol>
         </div>
+        <!-- Receta 2 -->
         <div class="receta">
             <h3>Sopaipillas</h3>
             <ul>
@@ -260,6 +279,7 @@
                 <li>Forma discos y fríe en aceite caliente.</li>
             </ol>
         </div>
+        <!-- Receta 3 -->
         <div class="receta">
             <h3>Anticuchos</h3>
             <ul>
@@ -272,10 +292,14 @@
                 <li>Ensarta en palos y asa a la parrilla.</li>
             </ol>
         </div>
+        {% endblock %}
     </div>
-
+    <!-- Sección de consejos, bloques dinámicos -->
     <div class="consejos-section">
+        {% block consejos_titulo %}
         <div class="consejos-title">Consejos para disfrutar las Fiestas Patrias</div>
+        {% endblock %}
+        {% block consejos_lista %}
         <div class="consejos-list">
             <ul>
                 <li>Prepara tus recetas con tiempo y en familia.</li>
@@ -285,11 +309,13 @@
                 <li>Recuerda hidratarte y celebrar con alegría.</li>
             </ul>
         </div>
+        {% endblock %}
     </div>
-
+    <!-- Botón para volver al inicio -->
     <div style="text-align:center; margin-bottom:40px;">
         <a href="/" class="btn-volver">Volver al inicio</a>
     </div>
+    <!-- Pie de página -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-left">

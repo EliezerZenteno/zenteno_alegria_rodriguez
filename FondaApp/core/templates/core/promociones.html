@@ -1,273 +1,306 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Promociones | FondaApp</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-		<style>
-			body {
-				margin: 0;
-				font-family: Arial, sans-serif;
-				background: #212529;
-				color: #fff;
-			}
-			.navbar {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				padding: 18px 40px;
-				background: url('https://www.sernac.cl/portal/604/articles-54495_imagen_01.jpg') center/cover no-repeat;
-				box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-				border-bottom: 3px solid #e63946;
-			}
-			.navbar .logo {
-				font-size: 2.2rem;
-				font-weight: bold;
-				color: #fff;
-				letter-spacing: 2px;
-				text-shadow: 2px 2px 8px #e63946, 0 0 10px #fff;
-			}
-			.navbar ul {
-				list-style: none;
-				display: flex;
-				margin: 0;
-				padding: 0;
-			}
-			.navbar ul li {
-				margin-left: 35px;
-			}
-			.navbar ul li a {
-				text-decoration: none;
-				font-size: 1.15rem;
-				font-weight: 700;
-				padding: 8px 18px;
-				border-radius: 6px;
-				box-shadow: 0 2px 8px rgba(230,57,70,0.2);
-				transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-			}
-			.navbar ul li a.home-link {
-				background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
-				color: #fff;
-			}
-			.navbar ul li a.promociones-link {
-				background: linear-gradient(90deg, #43ea5e 0%, #2ecc40 100%);
-				color: #fff;
-			}
-			.navbar ul li a.sobrenosotros-link {
-				background: linear-gradient(90deg, #a67c52 0%, #8d5524 100%);
-				color: #fff;
-			}
-			.navbar ul li a.recetas-link {
-				background: #e63946;
-				color: #fff;
-				font-weight: bold;
-				text-shadow: 1px 1px 6px #fff, 0 0 10px #e63946;
-				box-shadow: 0 2px 8px rgba(230,57,70,0.2);
-			}
-			.navbar ul li a.recetas-link.active,
-			.navbar ul li a.recetas-link:hover {
-				background: #e63946;
-				color: #fff;
-				opacity: 0.85;
-				box-shadow: 0 4px 16px rgba(230,57,70,0.4);
-			}
-			.banderines {
-				width: 100%;
-				display: flex;
-				justify-content: center;
-				margin: 0 auto 30px auto;
-				padding-top: 20px;
-			}
-			.banderines svg {
-				width: 90vw;
-				max-width: 1100px;
-				height: 60px;
-			}
-			.promo-banner {
-				width: 100%;
-				height: 220px;
-				background: url('https://www.elhuaso.cl/wp-content/uploads/2022/09/fiestas-patrias-chile.jpg') center/cover no-repeat;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				margin-bottom: 40px;
-				border-radius: 10px;
-				border: 4px solid #e63946;
-				box-shadow: 0 0 20px 0 #0d47a1;
-			}
-			.promo-banner-text {
-				background: rgba(33,37,41,0.7);
-				padding: 20px 40px;
-				border-radius: 10px;
-				font-size: 2rem;
-				font-weight: bold;
-				color: #fff;
-				text-shadow: 2px 2px 8px #000;
-			}
-			.promos {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 30px;
-				justify-content: center;
-				margin-bottom: 40px;
-			}
-			.promo-card {
-				background: #181a1b;
-				border-radius: 10px;
-				padding: 25px 20px;
-				width: 260px;
-				text-align: center;
-				box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				border: 3px solid #2196f3;
-				position: relative;
-			}
-			.promo-card h5 {
-				margin: 20px 0 10px 0;
-				font-size: 1.7rem;
-				color: #ffd600;
-				font-family: 'Bebas Neue', Arial, sans-serif;
-				letter-spacing: 1px;
-				text-shadow: 2px 2px 8px #e63946, 0 0 10px #fff;
-				font-weight: bold;
-			}
-			.promo-card p {
-				color: #fff;
-				font-size: 1.08rem;
-				font-family: 'Montserrat', Arial, sans-serif;
-				font-weight: 500;
-				line-height: 1.6;
-				letter-spacing: 0.2px;
-			}
-			.btn-volver {
-				background: #2196f3;
-				color: #fff;
-				border: none;
-				padding: 10px 30px;
-				border-radius: 6px;
-				font-weight: bold;
-				font-size: 1.1rem;
-				cursor: pointer;
-				transition: background 0.2s, color 0.2s;
-			}
-			.btn-volver:hover {
-				background: #e63946;
-				color: #fff;
-			}
-			h1.mb-4 {
-				color: #2196f3;
-				text-shadow: 1px 1px 8px #fff, 0 0 10px #e6394644;
-			}
-			.footer {
-				width: 100%;
-				border-top: 1px solid #444;
-				background: #212529;
-				padding: 18px 0;
-				margin-top: 40px;
-			}
-			.footer-content {
-				max-width: 1200px;
-				margin: 0 auto;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				color: #bfc1c3;
-				font-size: 1rem;
-				padding: 0 40px;
-			}
-			.footer-left {
-				display: flex;
-				align-items: center;
-				gap: 8px;
-			}
-			.footer-right a {
-				margin-left: 18px;
-				font-size: 2rem;
-				transition: color 0.2s;
-				vertical-align: middle;
-			}
-			.footer-right a[title="Twitter"] i {
-				color: #1da1f2;
-			}
-			.footer-right a[title="Instagram"] i {
-				color: #e1306c;
-			}
-			.footer-right a[title="Facebook"] i {
-				color: #1877f3;
-			}
-			.footer-right a:hover i {
-				color: #fff;
-			}
-		</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promociones | FondaApp</title>
+    <!-- Iconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fuente Bebas Neue para títulos -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #212529;
+            color: #fff;
+        }
+        /* Barra de navegación con imagen de fondo */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 40px;
+            background: url('https://www.sernac.cl/portal/604/articles-54495_imagen_01.jpg') center/cover no-repeat;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            border-bottom: 3px solid #e63946;
+        }
+        .navbar .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px #e63946, 0 0 10px #fff;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar ul li {
+            margin-left: 35px;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            font-size: 1.15rem;
+            font-weight: 700;
+            padding: 8px 18px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(230,57,70,0.2);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        /* Colores personalizados para cada sección del menú */
+        .navbar ul li a.home-link {
+            background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
+            color: #fff;
+        }
+        .navbar ul li a.promociones-link {
+            background: linear-gradient(90deg, #43ea5e 0%, #2ecc40 100%);
+            color: #fff;
+        }
+        .navbar ul li a.sobrenosotros-link {
+            background: linear-gradient(90deg, #a67c52 0%, #8d5524 100%);
+            color: #fff;
+        }
+        .navbar ul li a.recetas-link {
+            background: #e63946;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 1px 1px 6px #fff, 0 0 10px #e63946;
+            box-shadow: 0 2px 8px rgba(230,57,70,0.2);
+        }
+        .navbar ul li a.recetas-link.active,
+        .navbar ul li a.recetas-link:hover {
+            background: #e63946;
+            color: #fff;
+            opacity: 0.85;
+            box-shadow: 0 4px 16px rgba(230,57,70,0.4);
+        }
+        /* Banderines decorativos, bloque dinámico */
+        .banderines {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto 30px auto;
+            padding-top: 20px;
+        }
+        .banderines svg {
+            width: 90vw;
+            max-width: 1100px;
+            height: 60px;
+        }
+        /* Banner de promociones, bloque dinámico */
+        .promo-banner {
+            width: 100%;
+            height: 220px;
+            background: url('https://www.elhuaso.cl/wp-content/uploads/2022/09/fiestas-patrias-chile.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            border: 4px solid #e63946;
+            box-shadow: 0 0 20px 0 #0d47a1;
+        }
+        .promo-banner-text {
+            background: rgba(33,37,41,0.7);
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 8px #000;
+        }
+        /* Sección de tarjetas de promociones */
+        .promos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .promo-card {
+            background: #181a1b;
+            border-radius: 10px;
+            padding: 25px 20px;
+            width: 260px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid #2196f3;
+            position: relative;
+        }
+        /* Título de cada promoción */
+        .promo-card h5 {
+            margin: 20px 0 10px 0;
+            font-size: 1.7rem;
+            color: #ffd600;
+            font-family: 'Bebas Neue', Arial, sans-serif;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 8px #e63946, 0 0 10px #fff;
+            font-weight: bold;
+        }
+        /* Descripción de cada promoción */
+        .promo-card p {
+            color: #fff;
+            font-size: 1.08rem;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 500;
+            line-height: 1.6;
+            letter-spacing: 0.2px;
+        }
+        /* Botón para volver al inicio */
+        .btn-volver {
+            background: #2196f3;
+            color: #fff;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-volver:hover {
+            background: #e63946;
+            color: #fff;
+        }
+        /* Título principal de la página */
+        h1.mb-4 {
+            color: #2196f3;
+            text-shadow: 1px 1px 8px #fff, 0 0 10px #e6394644;
+        }
+        /* Pie de página */
+        .footer {
+            width: 100%;
+            border-top: 1px solid #444;
+            background: #212529;
+            padding: 18px 0;
+            margin-top: 40px;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #bfc1c3;
+            font-size: 1rem;
+            padding: 0 40px;
+        }
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-right a {
+            margin-left: 18px;
+            font-size: 2rem;
+            transition: color 0.2s;
+            vertical-align: middle;
+        }
+        .footer-right a[title="Twitter"] i {
+            color: #1da1f2;
+        }
+        .footer-right a[title="Instagram"] i {
+            color: #e1306c;
+        }
+        .footer-right a[title="Facebook"] i {
+            color: #1877f3;
+        }
+        .footer-right a:hover i {
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-	<nav class="navbar">
-		<div class="logo">FondaApp</div>
-		<ul>
-			<li><a href="/" class="home-link">Home</a></li>
-			<li><a href="/promociones/" class="promociones-link active">Promociones</a></li>
-			<li><a href="/sobrenosotros/" class="sobrenosotros-link">Sobre Nosotros</a></li>
-			<li><a href="/recetas/" class="recetas-link">Recetas</a></li>
-		</ul>
-	</nav>
-	<div class="banderines">
-		<svg viewBox="0 0 1100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<g>
-				<polygon points="0,0 30,60 60,0" fill="#d32f2f"/>
-				<polygon points="60,0 90,60 120,0" fill="#fff"/>
-				<polygon points="120,0 150,60 180,0" fill="#0d47a1"/>
-				<polygon points="180,0 210,60 240,0" fill="#d32f2f"/>
-				<polygon points="240,0 270,60 300,0" fill="#fff"/>
-				<polygon points="300,0 330,60 360,0" fill="#0d47a1"/>
-				<polygon points="360,0 390,60 420,0" fill="#d32f2f"/>
-				<polygon points="420,0 450,60 480,0" fill="#fff"/>
-				<polygon points="480,0 510,60 540,0" fill="#0d47a1"/>
-				<polygon points="540,0 570,60 600,0" fill="#d32f2f"/>
-				<polygon points="600,0 630,60 660,0" fill="#fff"/>
-				<polygon points="660,0 690,60 720,0" fill="#0d47a1"/>
-				<polygon points="720,0 750,60 780,0" fill="#d32f2f"/>
-				<polygon points="780,0 810,60 840,0" fill="#fff"/>
-				<polygon points="840,0 870,60 900,0" fill="#0d47a1"/>
-				<polygon points="900,0 930,60 960,0" fill="#d32f2f"/>
-				<polygon points="960,0 990,60 1020,0" fill="#fff"/>
-				<polygon points="1020,0 1050,60 1080,0" fill="#0d47a1"/>
-				<polygon points="1080,0 1110,60 1140,0" fill="#d32f2f"/>
-			</g>
-		</svg>
-	</div>
-	<div class="promo-banner">
-		<div class="promo-banner-text">
-			¡Celebra el 18 de Septiembre con nuestras promociones patrias!
-		</div>
-	</div>
-	<h1 class="mb-4 text-center" style="text-align:center;">Promociones Fiestas Patrias</h1>
-	<div class="promos">
-		<div class="promo-card">
-			<h5>2x1 en Empanadas</h5>
-			<p>¡Disfruta el sabor chileno! Llévate dos empanadas por el precio de una durante todo septiembre.</p>
-		</div>
-		<div class="promo-card">
-			<h5>Chicha Gratis</h5>
-			<p>Por cada menú Fiestas Patrias, te regalamos un vaso de chicha para brindar por Chile.</p>
-		</div>
-		<div class="promo-card">
-			<h5>Descuento Familiar</h5>
-			<p>Si vienes con tu familia (4 o más personas), obtén un 20% de descuento en tu cuenta total.</p>
-		</div>
-		<div class="promo-card">
-			<h5>Anticuchos a precio especial</h5>
-			<p>Anticuchos tradicionales a solo $1.500 cada uno, solo por Fiestas Patrias.</p>
-		</div>
-	</div>
-	<div style="text-align:center; margin-bottom:40px;">
-		<a href="/" class="btn-volver">Volver al inicio</a>
-	</div>
-	<footer class="footer">
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="logo">FondaApp</div>
+        <ul>
+            <li><a href="/" class="home-link">Home</a></li>
+            <li><a href="/promociones/" class="promociones-link active">Promociones</a></li>
+            <li><a href="/sobrenosotros/" class="sobrenosotros-link">Sobre Nosotros</a></li>
+            <li><a href="/recetas/" class="recetas-link">Recetas</a></li>
+        </ul>
+    </nav>
+    <!-- Banderines decorativos, bloque dinámico -->
+    {% block banderines %}
+    <div class="banderines">
+        <svg viewBox="0 0 1100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Polígonos de colores para los banderines -->
+            <g>
+                <polygon points="0,0 30,60 60,0" fill="#d32f2f"/>
+                <polygon points="60,0 90,60 120,0" fill="#fff"/>
+                <polygon points="120,0 150,60 180,0" fill="#0d47a1"/>
+                <polygon points="180,0 210,60 240,0" fill="#d32f2f"/>
+                <polygon points="240,0 270,60 300,0" fill="#fff"/>
+                <polygon points="300,0 330,60 360,0" fill="#0d47a1"/>
+                <polygon points="360,0 390,60 420,0" fill="#d32f2f"/>
+                <polygon points="420,0 450,60 480,0" fill="#fff"/>
+                <polygon points="480,0 510,60 540,0" fill="#0d47a1"/>
+                <polygon points="540,0 570,60 600,0" fill="#d32f2f"/>
+                <polygon points="600,0 630,60 660,0" fill="#fff"/>
+                <polygon points="660,0 690,60 720,0" fill="#0d47a1"/>
+                <polygon points="720,0 750,60 780,0" fill="#d32f2f"/>
+                <polygon points="780,0 810,60 840,0" fill="#fff"/>
+                <polygon points="840,0 870,60 900,0" fill="#0d47a1"/>
+                <polygon points="900,0 930,60 960,0" fill="#d32f2f"/>
+                <polygon points="960,0 990,60 1020,0" fill="#fff"/>
+                <polygon points="1020,0 1050,60 1080,0" fill="#0d47a1"/>
+                <polygon points="1080,0 1110,60 1140,0" fill="#d32f2f"/>
+            </g>
+        </svg>
+    </div>
+    {% endblock %}
+    <!-- Banner de promociones, bloque dinámico -->
+    {% block promo_banner %}
+    <div class="promo-banner">
+        <div class="promo-banner-text">
+            ¡Celebra el 18 de Septiembre con nuestras promociones patrias!
+        </div>
+    </div>
+    {% endblock %}
+    <!-- Título principal -->
+    <h1 class="mb-4 text-center" style="text-align:center;">Promociones Fiestas Patrias</h1>
+    <!-- Sección de promociones, bloque dinámico -->
+    {% block promociones %}
+    <div class="promos">
+        <!-- Bloque extra para agregar más promociones desde otras plantillas -->
+        {% block promo_extra %}{% endblock %}
+        <!-- Promoción 1 -->
+        <div class="promo-card">
+            <h5>2x1 en Empanadas</h5>
+            <p>¡Disfruta el sabor chileno! Llévate dos empanadas por el precio de una durante todo septiembre.</p>
+        </div>
+        <!-- Promoción 2 -->
+        <div class="promo-card">
+            <h5>Chicha Gratis</h5>
+            <p>Por cada menú Fiestas Patrias, te regalamos un vaso de chicha para brindar por Chile.</p>
+        </div>
+        <!-- Promoción 3 -->
+        <div class="promo-card">
+            <h5>Descuento Familiar</h5>
+            <p>Si vienes con tu familia (4 o más personas), obtén un 20% de descuento en tu cuenta total.</p>
+        </div>
+        <!-- Promoción 4 -->
+        <div class="promo-card">
+            <h5>Anticuchos a precio especial</h5>
+            <p>Anticuchos tradicionales a solo $1.500 cada uno, solo por Fiestas Patrias.</p>
+        </div>
+    </div>
+    {% endblock %}
+    <!-- Botón para volver al inicio -->
+    <div style="text-align:center; margin-bottom:40px;">
+        <a href="/" class="btn-volver">Volver al inicio</a>
+    </div>
+    <!-- Pie de página -->
+    <footer class="footer">
     <div class="footer-content">
         <div class="footer-left">
             <i class="fa-solid fa-copyright"></i> 2025 FondaApp, Chile

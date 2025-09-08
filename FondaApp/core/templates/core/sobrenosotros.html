@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nosotros | FondaApp</title>
+    <!-- Iconos Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fuentes Bebas Neue y Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500&display=swap');
-
+        /* Estilos generales */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background: #212529;
             color: #fff;
         }
+        /* Barra de navegación con imagen de fondo */
         .navbar {
             display: flex;
             align-items: center;
@@ -49,6 +52,7 @@
             box-shadow: 0 2px 8px rgba(230,57,70,0.2);
             transition: background 0.2s, color 0.2s, box-shadow 0.2s;
         }
+        /* Colores personalizados para cada sección del menú */
         .navbar ul li a.home-link {
             background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
             color: #fff;
@@ -75,6 +79,7 @@
             opacity: 0.85;
             box-shadow: 0 4px 16px rgba(230,57,70,0.4);
         }
+        /* Contenedor principal de la página */
         .container {
             max-width: 900px;
             margin: 40px auto;
@@ -83,12 +88,14 @@
             padding: 40px 30px;
             box-shadow: 0 2px 16px rgba(0,0,0,0.3);
         }
+        /* Título principal */
         h1 {
-            color: #fff; /* Cambiado de #d32f2f a blanco */
+            color: #fff;
             text-align: center;
             margin-bottom: 30px;
             text-shadow: 1px 1px 8px #fff, 0 0 10px #d32f2f44;
         }
+        /* Títulos de sección */
         h2 {
             color: #fff;
             font-family: 'Bebas Neue', Arial, sans-serif;
@@ -99,6 +106,7 @@
             text-shadow: 2px 2px 8px #e63946, 0 0 10px #fff;
             font-weight: normal;
         }
+        /* Texto y listas con fuente Montserrat */
         p, li {
             color: #bfc1c3;
             font-size: 1.1rem;
@@ -107,6 +115,7 @@
             line-height: 1.7;
             letter-spacing: 0.2px;
         }
+        /* Botón para volver al inicio */
         .btn-volver {
             background: #0d47a1;
             color: #fff;
@@ -124,6 +133,7 @@
             background: #d32f2f;
             color: #fff;
         }
+        /* Pie de página */
         .footer {
             width: 100%;
             border-top: 1px solid #444;
@@ -167,6 +177,7 @@
     </style>
 </head>
 <body>
+    <!-- Barra de navegación -->
     <nav class="navbar">
         <div class="logo">FondaApp</div>
         <ul>
@@ -177,11 +188,16 @@
         </ul>
     </nav>
     <div class="container">
+        <!-- Bloque dinámico: ¿Quiénes somos? -->
+        {% block quienes_somos %}
         <h1>Sobre Nosotros</h1>
         <h2>¿Quiénes somos?</h2>
         <p>
             FondaApp es una empresa dedicada a celebrar y difundir la cultura chilena a través de la organización de fondas y eventos típicos. Desde nuestros inicios en 2010, hemos trabajado para ofrecer experiencias auténticas y memorables durante las Fiestas Patrias, reuniendo a familias y amigos en torno a la buena comida, música y tradiciones.
         </p>
+        {% endblock %}
+        <!-- Bloque dinámico: Misión y valores -->
+        {% block mision_valores %}
         <h2>Nuestra Misión</h2>
         <p>
             Promover y preservar las tradiciones chilenas, brindando espacios de encuentro y alegría donde todos puedan disfrutar de la gastronomía y el folclore nacional.
@@ -193,12 +209,15 @@
             <li>Respeto y cercanía con nuestros clientes</li>
             <li>Innovación en la organización de eventos</li>
         </ul>
+        {% endblock %}
+        <!-- Sección de contacto -->
         <h2>Contacto</h2>
         <p>
             ¿Quieres saber más o participar en nuestras fondas? Escríbenos a <a href="mailto:contacto@fondaapp.cl" style="color:#43ea5e;">contacto@fondaapp.cl</a> o síguenos en nuestras redes sociales.
         </p>
         <a href="/" class="btn-volver">Volver al inicio</a>
     </div>
+    <!-- Pie de página -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-left">
