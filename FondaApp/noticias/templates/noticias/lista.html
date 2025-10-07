@@ -23,13 +23,18 @@
         <div class="noticias-grid">
             {% for posteo in posteos %}
                 <article class="noticia-card">
+                    {% if posteo.imagen %}
+                        <div class="noticia-imagen">
+                            <img src="{{ posteo.imagen.url }}" alt="{{ posteo.titulo }}" />
+                        </div>
+                    {% endif %}
                     <div class="noticia-content">
                         <h2 class="noticia-title">{{ posteo.titulo }}</h2>
                         <p class="noticia-excerpt">{{ posteo.contenido|truncatewords:20 }}</p>
                         <div class="noticia-meta">
                             <i class="fas fa-user"></i> {{ posteo.autor.username }}
                             <br>
-                            <i class="fas fa-calendar"></i> {{ posteo.fecha_creacion|date:"d/m/Y H:i" }}
+                            <i class="fas fa-calendar"></i> {{ posteo.created|date:"d/m/Y H:i" }}
                         </div>
                         <div class="noticia-actions">
                             <a href="{% url 'noticias:detalle' posteo.pk %}" class="btn btn-primary">
