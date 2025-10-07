@@ -1,0 +1,40 @@
+{% extends 'noticias/base.html' %}
+
+{% block title %}{{ posteo.titulo }} - FondaApp{% endblock %}
+
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'noticias:lista' %}">Noticias</a></li>
+            <li class="breadcrumb-item active">{{ posteo.titulo|truncatechars:30 }}</li>
+        </ol>
+    </nav>
+
+    <article class="noticia-detail">
+        <header>
+            <h1>{{ posteo.titulo }}</h1>
+            <div class="noticia-detail-meta">
+                <i class="fas fa-user"></i> Por <strong>{{ posteo.autor.username }}</strong>
+                <br>
+                <i class="fas fa-calendar"></i> {{ posteo.fecha_creacion|date:"d/m/Y H:i" }}
+                {% if posteo.fecha_creacion != posteo.fecha_actualizacion %}
+                    <br>
+                    <i class="fas fa-edit"></i> Actualizado el {{ posteo.fecha_actualizacion|date:"d/m/Y H:i" }}
+                {% endif %}
+            </div>
+        </header>
+
+        <div class="noticia-detail-content">
+            {{ posteo.contenido|linebreaks }}
+        </div>
+    </article>
+
+    <div class="mt-4">
+        <a href="{% url 'noticias:lista' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Volver a noticias
+        </a>
+    </div>
+</div>
+{% endblock %}

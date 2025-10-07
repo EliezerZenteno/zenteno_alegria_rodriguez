@@ -1,0 +1,159 @@
+/* Estilos base para FondaApp */
+
+/* Estilos generales para el cuerpo */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #212529;
+    color: #fff;
+}
+
+/* Barra de navegación superior con imagen de fondo */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 40px;
+    background: url('https://www.sernac.cl/portal/604/articles-54495_imagen_01.jpg') center/cover no-repeat;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    border-bottom: 3px solid #e63946;
+}
+
+/* Logo de la barra de navegación */
+.navbar .logo {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px #e63946, 0 0 10px #fff;
+}
+
+/* Menú de navegación */
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    margin-left: 35px;
+}
+
+/* Estilos de los enlaces del menú */
+.navbar ul li a {
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(230,57,70,0.2);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+/* Colores personalizados para cada sección del menú */
+.navbar ul li a.home-link {
+    background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
+    color: #fff;
+}
+
+.navbar ul li a.promociones-link {
+    background: linear-gradient(90deg, #43ea5e 0%, #2ecc40 100%);
+    color: #fff;
+}
+
+.navbar ul li a.sobrenosotros-link {
+    background: linear-gradient(90deg, #a67c52 0%, #8d5524 100%);
+    color: #fff;
+}
+
+.navbar ul li a.recetas-link {
+    background: linear-gradient(90deg, #e63946 0%, #ff7675 100%);
+    color: #fff;
+}
+
+.navbar ul li a.noticias-link {
+    background: linear-gradient(90deg, #6c5ce7 0%, #a29bfe 100%);
+    color: #fff;
+}
+
+/* Efecto al pasar el mouse o estar activo */
+.navbar ul li a.active,
+.navbar ul li a:hover {
+    box-shadow: 0 4px 16px rgba(230,57,70,0.4);
+    opacity: 0.85;
+}
+
+/* Pie de página */
+.footer {
+    width: 100%;
+    border-top: 1px solid #444;
+    background: #212529;
+    padding: 18px 0;
+    margin-top: 40px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #bfc1c3;
+    font-size: 1rem;
+    padding: 0 40px;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Iconos de redes sociales en el footer */
+.footer-right a {
+    margin-left: 18px;
+    font-size: 2rem;
+    transition: color 0.2s;
+    vertical-align: middle;
+}
+
+.footer-right a[title="Twitter"] i {
+    color: #1da1f2;
+}
+
+.footer-right a[title="Instagram"] i {
+    color: #e1306c;
+}
+
+.footer-right a[title="Facebook"] i {
+    color: #1877f3;
+}
+
+.footer-right a:hover i {
+    color: #fff;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px 20px;
+    }
+    
+    .navbar ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .navbar ul li {
+        margin: 5px 10px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}

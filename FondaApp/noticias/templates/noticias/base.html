@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/noticias.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if user.is_staff %}
+    <div class="container">
+        <div class="alert alert-info" style="margin-top: 20px;">
+            <i class="fas fa-info-circle"></i>
+            <strong>Panel de administrador:</strong> 
+            Para gestionar noticias (crear, editar, eliminar), 
+            <a href="{% url 'admin:noticias_posteo_changelist' %}" style="color: #fff; text-decoration: underline;">
+                accede al panel de administración
+            </a>.
+        </div>
+    </div>
+{% endif %}
+
+{{ block.super }}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'noticias/base.html' %}
+
+{% block title %}Lista de Noticias - FondaApp{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Mensajes de Django -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Encabezado -->
+    <div class="noticias-header">
+        <h1><i class="fas fa-newspaper"></i> Noticias</h1>
+    </div>
+
+    <!-- Grid de noticias -->
+    {% if posteos %}
+        <div class="noticias-grid">
+            {% for posteo in posteos %}
+                <article class="noticia-card">
+                    <div class="noticia-content">
+                        <h2 class="noticia-title">{{ posteo.titulo }}</h2>
+                        <p class="noticia-excerpt">{{ posteo.contenido|truncatewords:20 }}</p>
+                        <div class="noticia-meta">
+                            <i class="fas fa-user"></i> {{ posteo.autor.username }}
+                            <br>
+                            <i class="fas fa-calendar"></i> {{ posteo.fecha_creacion|date:"d/m/Y H:i" }}
+                        </div>
+                        <div class="noticia-actions">
+                            <a href="{% url 'noticias:detalle' posteo.pk %}" class="btn btn-primary">
+                                <i class="fas fa-eye"></i> Leer más
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <i class="fas fa-newspaper"></i>
+            <h3>No hay noticias disponibles</h3>
+            <p>Próximamente tendremos noticias interesantes para ti.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,252 +1,45 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Título de la página, se puede sobrescribir desde otras plantillas -->
-    <title>{% block title %}Inicio{% endblock %}</title>
-    {% block extra_css %}
-    <style>
-        /* Estilos generales para el cuerpo */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #212529;
-            color: #fff;
-        }
-        /* Barra de navegación superior con imagen de fondo */
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 40px;
-            background: url('https://www.sernac.cl/portal/604/articles-54495_imagen_01.jpg') center/cover no-repeat;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-            border-bottom: 3px solid #e63946;
-        }
-        /* Logo de la barra de navegación */
-        .navbar .logo {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: #fff;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 8px #e63946, 0 0 10px #fff;
-        }
-        /* Menú de navegación */
-        .navbar ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-        .navbar ul li {
-            margin-left: 35px;
-        }
-        /* Estilos de los enlaces del menú */
-        .navbar ul li a {
-            text-decoration: none;
-            font-size: 1.15rem;
-            font-weight: 700;
-            padding: 8px 18px;
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(230,57,70,0.2);
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-        }
-        /* Colores personalizados para cada sección del menú */
-        .navbar ul li a.home-link {
-            background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
-            color: #fff;
-        }
-        .navbar ul li a.promociones-link {
-            background: linear-gradient(90deg, #43ea5e 0%, #2ecc40 100%);
-            color: #fff;
-        }
-        .navbar ul li a.sobrenosotros-link {
-            background: linear-gradient(90deg, #a67c52 0%, #8d5524 100%);
-            color: #fff;
-        }
-        .navbar ul li a.recetas-link {
-            background: linear-gradient(90deg, #e63946 0%, #ff7675 100%);
-            color: #fff;
-        }
-        /* Efecto al pasar el mouse o estar activo */
-        .navbar ul li a.active,
-        .navbar ul li a:hover {
-            box-shadow: 0 4px 16px rgba(230,57,70,0.4);
-            opacity: 0.85;
-        }
-        /* Banner principal de bienvenida */
-        .banner {
-            width: 100%;
-            height: 300px;
-            background: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 40px;
-            border-radius: 10px;
-        }
-        .banner-text {
-            background: rgba(33,37,41,0.7);
-            padding: 30px 50px;
-            border-radius: 10px;
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #fff;
-            text-shadow: 2px 2px 8px #000;
-        }
-        /* Sección de productos destacados */
-        .productos {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            margin-bottom: 40px;
-        }
-        .producto {
-            background: #181a1b;
-            border-radius: 10px;
-            padding: 20px;
-            width: 220px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-        .producto img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-        /* Título de cada producto */
-        .producto h3 {
-            margin: 10px 0 5px 0;
-            font-size: 1.7rem;
-            color: #fff;
-            font-family: 'Bebas Neue', Arial, sans-serif;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 8px #e63946, 0 0 10px #fff;
-        }
-        /* Descripción de cada producto */
-        .producto p {
-            color: #bfc1c3;
-            font-size: 1.08rem;
-            font-family: 'Montserrat', Arial, sans-serif;
-            font-weight: 500;
-            line-height: 1.6;
-            letter-spacing: 0.2px;
-        }
-        /* Pie de página */
-        .footer {
-            width: 100%;
-            border-top: 1px solid #444;
-            background: #212529;
-            padding: 18px 0;
-            margin-top: 40px;
-        }
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #bfc1c3;
-            font-size: 1rem;
-            padding: 0 40px;
-        }
-        .footer-left {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        /* Iconos de redes sociales en el footer */
-        .footer-right a {
-            margin-left: 18px;
-            font-size: 2rem;
-            transition: color 0.2s;
-            vertical-align: middle;
-        }
-        .footer-right a[title="Twitter"] i {
-            color: #1da1f2;
-        }
-        .footer-right a[title="Instagram"] i {
-            color: #e1306c;
-        }
-        .footer-right a[title="Facebook"] i {
-            color: #1877f3;
-        }
-        .footer-right a:hover i {
-            color: #fff;
-        }
-    </style>
-    <!-- Fuente Bebas Neue para títulos -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <!-- Font Awesome para iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    {% endblock %}
-</head>
-<body>
-    <!-- Barra de navegación con enlaces a las distintas páginas -->
-    <nav class="navbar">
-        <div class="logo">FondaApp</div>
-        <ul>
-            <li><a href="/" class="home-link active">Home</a></li>
-            <li><a href="/promociones/" class="promociones-link">Promociones</a></li>
-            <li><a href="/sobrenosotros/" class="sobrenosotros-link">Sobre Nosotros</a></li>
-            <li><a href="/recetas/" class="recetas-link">Recetas</a></li>
-        </ul>
-    </nav>
-    <!-- Banner principal, bloque dinámico -->
-    {% block banner %}
-    <div class="banner">
-        <div class="banner-text">
-            ¡Celebra las Fiestas Patrias con nosotros!
-        </div>
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Inicio - FondaApp{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Banner principal -->
+<div class="banner">
+    <div class="banner-text">
+        ¡Celebra las Fiestas Patrias con nosotros!
     </div>
-    {% endblock %}
-    <!-- Sección de productos, bloque dinámico -->
-    {% block productos %}
-    <div class="productos">
-        <!-- Bloque extra para agregar más productos desde otras plantillas -->
-        {% block producto_extra %}{% endblock %}
-        <!-- Producto 1 -->
-        <div class="producto">
-            <img src="https://as2.ftcdn.net/v2/jpg/00/56/48/03/1000_F_56480342_VgvJbiq6g95rYlHU9ToxfYteIhchBitW.jpg" alt="Anticuchos">
-            <h3>Anticuchos</h3>
-            <p>Deliciosos anticuchos preparados a la parrilla.</p>
-        </div>
-        <!-- Producto 2 -->
-        <div class="producto">
-            <img src="https://images.pexels.com/photos/33673326/pexels-photo-33673326.jpeg" alt="Empanadas">
-            <h3>Empanadas</h3>
-            <p>Empanadas tradicionales chilenas, rellenas de carne, huevo y aceituna.</p>
-        </div>
-        <!-- Producto 3 -->
-        <div class="producto">
-            <img src="https://tse3.mm.bing.net/th/id/OIP.hqp-FoEI2Fvylw0VCNOybgHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pajaritos">
-            <h3>Pajaritos</h3>
-            <p>Con huevo y con pancito amasado de las mejores madres o abuelas.</p>
-        </div>
-        <!-- Producto 4 -->
-        <div class="producto">
-            <img src="https://www.fmdos.cl/wp-content/uploads/2016/09/sopaipillas-y-pebre.jpg" alt="Sopaipillas">
-            <h3>Sopaipillas</h3>
-            <p>Sopaipillas caseras, perfectas para acompañar con pebre</p>
-        </div>
+</div>
+
+<!-- Sección de productos -->
+<div class="productos">
+    <!-- Producto 1 -->
+    <div class="producto">
+        <img src="https://as2.ftcdn.net/v2/jpg/00/56/48/03/1000_F_56480342_VgvJbiq6g95rYlHU9ToxfYteIhchBitW.jpg" alt="Anticuchos">
+        <h3>Anticuchos</h3>
+        <p>Deliciosos anticuchos preparados a la parrilla.</p>
     </div>
-    {% endblock %}
-    <!-- Pie de página con derechos y redes sociales -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-left">
-                <i class="fa-solid fa-copyright"></i> 2025 FondaApp, Chile
-            </div>
-            <div class="footer-right">
-                <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+    <!-- Producto 2 -->
+    <div class="producto">
+        <img src="https://images.pexels.com/photos/33673326/pexels-photo-33673326.jpeg" alt="Empanadas">
+        <h3>Empanadas</h3>
+        <p>Empanadas tradicionales chilenas, rellenas de carne, huevo y aceituna.</p>
+    </div>
+    <!-- Producto 3 -->
+    <div class="producto">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.hqp-FoEI2Fvylw0VCNOybgHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pajaritos">
+        <h3>Pajaritos</h3>
+        <p>Con huevo y con pancito amasado de las mejores madres o abuelas.</p>
+    </div>
+    <!-- Producto 4 -->
+    <div class="producto">
+        <img src="https://www.fmdos.cl/wp-content/uploads/2016/09/sopaipillas-y-pebre.jpg" alt="Sopaipillas">
+        <h3>Sopaipillas</h3>
+        <p>Sopaipillas caseras, perfectas para acompañar con pebre</p>
+    </div>
+</div>
+{% endblock %}
