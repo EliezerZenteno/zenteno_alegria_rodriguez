@@ -43,11 +43,13 @@
     text-decoration: none;
 }
 
-/* Grid de noticias */
+/* Grid de noticias: columnas más flexibles para mejorar proporciones */
 .noticias-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
+    /* Reducimos el min-width de las cards para que encajen mejor en pantallas grandes
+       y móviles intermedios. */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
     margin-bottom: 40px;
 }
 
@@ -59,6 +61,14 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #333;
+}
+
+/* Imagen de la tarjeta: mantener proporciones y recorte consistente */
+.noticia-imagen img {
+    width: 100%;
+    height: 180px; /* altura consistente */
+    object-fit: cover; /* recorta centrado */
+    display: block;
 }
 
 .noticia-card:hover {
@@ -112,6 +122,46 @@
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
+}
+
+/* Paginación: lista horizontal centrada sin viñetas, botones con tamaño reducido */
+.noticias-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.pagination-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.pagination-list li {
+    display: inline-block;
+}
+
+.pagination-list li .btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+
+.pagination-list li.disabled .btn,
+.pagination-list li .btn.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Estilo para el número de página activo */
+.pagination-list li.active .btn,
+.pagination-list li .btn.btn-primary.active,
+.pagination-list li .btn.btn-primary[aria-current] {
+    background: #6c5ce7;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(108,92,231,0.3);
 }
 
 .btn-primary {

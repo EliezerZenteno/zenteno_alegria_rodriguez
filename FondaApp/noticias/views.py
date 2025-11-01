@@ -2,13 +2,25 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Posteo
+from django.core.paginator import Paginator
 from .forms import PosteoForm
 
 
 def lista_noticias(request):
     """Vista para mostrar todas las noticias activas"""
-    posteos = Posteo.objects.filter(activo=True)
-    return render(request, 'noticias/lista.html', {'posteos': posteos})
+    posteos_list = Posteo.objects.filter(activo=True)
+    # Paginación: 5 posteos por página (ajustable)
+    paginator = Paginator(posteos_list, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    # Para mantener compatibilidad con la plantilla existente, pasamos
+    # 'posteos' como el page_obj (es iterable) además de page_obj y paginator
+    context = {
+        'posteos': page_obj,
+        'page_obj': page_obj,
+        'paginator': paginator,
+    }
+    return render(request, 'noticias/lista.html', context)
 
 
 def detalle_noticia(request, pk):
