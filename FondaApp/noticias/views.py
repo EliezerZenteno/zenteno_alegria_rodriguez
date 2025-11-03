@@ -1,24 +1,65 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Posteo
+from .models import Posteo, Categoria
 from django.core.paginator import Paginator
 from .forms import PosteoForm
+from django.db.models import Q
 
 
 def lista_noticias(request):
-    """Vista para mostrar todas las noticias activas"""
+    """Vista para mostrar todas las noticias activas con filtros"""
     posteos_list = Posteo.objects.filter(activo=True)
-    # Paginación: 5 posteos por página (ajustable)
+    
+    # Filtro 1: Por categoría
+    categoria_id = request.GET.get('categoria')
+    if categoria_id:
+        posteos_list = posteos_list.filter(categoria_id=categoria_id)
+    
+    # Filtro 2: Por autor
+    autor_id = request.GET.get('autor')
+    if autor_id:
+        posteos_list = posteos_list.filter(autor_id=autor_id)
+    
+    # Filtro 3: Por búsqueda de texto
+    busqueda = request.GET.get('buscar')
+    if busqueda:
+        posteos_list = posteos_list.filter(
+            Q(titulo__icontains=busqueda) | Q(contenido__icontains=busqueda)
+        )
+    
+    # Filtro 4: Solo destacados
+    destacado = request.GET.get('destacado')
+    if destacado == '1':
+        posteos_list = posteos_list.filter(destacado=True)
+    
+    # Ordenamiento
+    orden = request.GET.get('orden', '-created')
+    posteos_list = posteos_list.order_by(orden)
+    
+    # Paginación
     paginator = Paginator(posteos_list, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    # Para mantener compatibilidad con la plantilla existente, pasamos
-    # 'posteos' como el page_obj (es iterable) además de page_obj y paginator
+    
+    # Obtener todas las categorías para el filtro
+    categorias = Categoria.objects.filter(activo=True)
+    
+    # Obtener autores únicos
+    from django.contrib.auth.models import User
+    autores = User.objects.filter(posteos__activo=True).distinct()
+    
     context = {
         'posteos': page_obj,
         'page_obj': page_obj,
         'paginator': paginator,
+        'categorias': categorias,
+        'autores': autores,
+        'categoria_seleccionada': categoria_id,
+        'autor_seleccionado': autor_id,
+        'busqueda': busqueda or '',
+        'destacado': destacado,
+        'orden': orden,
     }
     return render(request, 'noticias/lista.html', context)
 
@@ -26,7 +67,19 @@ def lista_noticias(request):
 def detalle_noticia(request, pk):
     """Vista para mostrar el detalle de una noticia"""
     posteo = get_object_or_404(Posteo, pk=pk, activo=True)
-    return render(request, 'noticias/detalle.html', {'posteo': posteo})
+    
+    # Incrementar contador de visitas
+    posteo.visitas += 1
+    posteo.save(update_fields=['visitas'])
+    
+    # Obtener comentarios activos
+    comentarios = posteo.comentarios.filter(activo=True).select_related('autor')
+    
+    context = {
+        'posteo': posteo,
+        'comentarios': comentarios,
+    }
+    return render(request, 'noticias/detalle.html', context)
 
 
 @login_required

@@ -30,6 +30,7 @@
             <li><a href="{% url 'sobrenosotros' %}" class="sobrenosotros-link {% if request.resolver_match.url_name == 'sobrenosotros' %}active{% endif %}">Sobre Nosotros</a></li>
             <li><a href="{% url 'recetas' %}" class="recetas-link {% if request.resolver_match.url_name == 'recetas' %}active{% endif %}">Recetas</a></li>
             <li><a href="{% url 'noticias:lista' %}" class="noticias-link {% if 'noticias' in request.resolver_match.app_name %}active{% endif %}">Noticias</a></li>
+            <li><a href="{% url 'contacto:contacto' %}" class="contacto-link {% if 'contacto' in request.resolver_match.app_name %}active{% endif %}">Contactanos</a></li>
         </ul>
     </nav>
 

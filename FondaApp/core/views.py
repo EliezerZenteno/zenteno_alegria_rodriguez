@@ -11,3 +11,7 @@ def promociones(request):
 
 def recetas(request):
     return render(request, 'core/recetas.html')
+
+def error_404(request, exception):
+    """Vista personalizada para error 404"""
+    return render(request, '404.html', status=404)

@@ -77,6 +77,11 @@ body {
     color: #fff;
 }
 
+.navbar ul li a.contacto-link {
+    background: linear-gradient(90deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: #fff;
+}
+
 /* Efecto al pasar el mouse o estar activo */
 .navbar ul li a.active,
 .navbar ul li a:hover {
