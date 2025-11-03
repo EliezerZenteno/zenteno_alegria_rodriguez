@@ -18,10 +18,10 @@
             <div class="noticia-detail-meta">
                 <i class="fas fa-user"></i> Por <strong>{{ posteo.autor.username }}</strong>
                 <br>
-                <i class="fas fa-calendar"></i> {{ posteo.fecha_creacion|date:"d/m/Y H:i" }}
-                {% if posteo.fecha_creacion != posteo.fecha_actualizacion %}
+                <i class="fas fa-calendar"></i> {{ posteo.created|date:"d/m/Y H:i" }}
+                {% if posteo.created != posteo.updated %}
                     <br>
-                    <i class="fas fa-edit"></i> Actualizado el {{ posteo.fecha_actualizacion|date:"d/m/Y H:i" }}
+                    <i class="fas fa-edit"></i> Actualizado el {{ posteo.updated|date:"d/m/Y H:i" }}
                 {% endif %}
             </div>
         </header>
@@ -30,6 +30,63 @@
             {{ posteo.contenido|linebreaks }}
         </div>
     </article>
+
+    <!-- Sección de Comentarios -->
+    <div class="comentarios-section mt-5">
+        <h3><i class="fas fa-comments"></i> Comentarios ({{ comentarios.count }})</h3>
+        <hr>
+        
+        <!-- Formulario para agregar comentario -->
+        {% if user.is_authenticated %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Agregar un comentario</h5>
+                <form method="post" action="{% url 'noticias:crear_comentario' posteo.pk %}">
+                    {% csrf_token %}
+                    {{ comentario_form.contenido }}
+                    <button type="submit" class="btn btn-primary mt-2">
+                        <i class="fas fa-paper-plane"></i> Enviar comentario
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% else %}
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i> 
+            Debes <a href="{% url 'login' %}?next={{ request.path }}">iniciar sesión</a> para comentar.
+        </div>
+        {% endif %}
+
+        <!-- Lista de comentarios -->
+        {% if comentarios %}
+        <div class="comentarios-lista">
+            {% for comentario in comentarios %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h6 class="card-subtitle mb-2">
+                                <i class="fas fa-user-circle"></i> 
+                                <strong>{{ comentario.autor.username }}</strong>
+                            </h6>
+                            <p class="text-muted small">
+                                <i class="fas fa-clock"></i> 
+                                {{ comentario.created|date:"d/m/Y H:i" }}
+                            </p>
+                        </div>
+                    </div>
+                    <p class="card-text">{{ comentario.contenido|linebreaks }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="alert alert-secondary">
+            <i class="fas fa-comment-slash"></i> 
+            Aún no hay comentarios. ¡Sé el primero en comentar!
+        </div>
+        {% endif %}
+    </div>
 
     <div class="mt-4">
         <a href="{% url 'noticias:lista' %}" class="btn btn-secondary">

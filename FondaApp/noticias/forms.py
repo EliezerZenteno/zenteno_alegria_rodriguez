@@ -1,5 +1,5 @@
 from django import forms
-from .models import Posteo
+from .models import Posteo, Comentario
 
 
 class PosteoForm(forms.ModelForm):
@@ -20,4 +20,20 @@ class PosteoForm(forms.ModelForm):
         labels = {
             'titulo': 'Título',
             'contenido': 'Contenido',
+        }
+
+
+class ComentarioForm(forms.ModelForm):
+    class Meta:
+        model = Comentario
+        fields = ['contenido']
+        widgets = {
+            'contenido': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 3,
+                'placeholder': 'Escribe tu comentario aquí...'
+            }),
+        }
+        labels = {
+            'contenido': 'Comentario',
         }

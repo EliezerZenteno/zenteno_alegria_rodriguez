@@ -6,6 +6,7 @@ app_name = 'noticias'
 urlpatterns = [
     path('', views.lista_noticias, name='lista'),
     path('<int:pk>/', views.detalle_noticia, name='detalle'),
+    path('<int:pk>/comentario/', views.crear_comentario, name='crear_comentario'),
     # Las siguientes rutas están deshabilitadas para uso público
     # Solo se pueden gestionar noticias desde el admin de Django
     # path('crear/', views.crear_noticia, name='crear'),

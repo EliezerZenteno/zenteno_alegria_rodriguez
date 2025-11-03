@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Posteo, Categoria
+from .models import Posteo, Categoria, Comentario
 from django.core.paginator import Paginator
-from .forms import PosteoForm
+from .forms import PosteoForm, ComentarioForm
 from django.db.models import Q
 
 
@@ -75,9 +75,13 @@ def detalle_noticia(request, pk):
     # Obtener comentarios activos
     comentarios = posteo.comentarios.filter(activo=True).select_related('autor')
     
+    # Crear instancia del formulario
+    comentario_form = ComentarioForm()
+    
     context = {
         'posteo': posteo,
         'comentarios': comentarios,
+        'comentario_form': comentario_form,
     }
     return render(request, 'noticias/detalle.html', context)
 
@@ -136,3 +140,22 @@ def eliminar_noticia(request, pk):
         return redirect('noticias:lista')
     
     return render(request, 'noticias/eliminar.html', {'posteo': posteo})
+
+
+@login_required
+def crear_comentario(request, pk):
+    """Vista para crear un comentario en un posteo"""
+    posteo = get_object_or_404(Posteo, pk=pk, activo=True)
+    
+    if request.method == 'POST':
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+            comentario = form.save(commit=False)
+            comentario.posteo = posteo
+            comentario.autor = request.user
+            comentario.save()
+            messages.success(request, 'Comentario agregado exitosamente.')
+        else:
+            messages.error(request, 'Hubo un error al agregar el comentario.')
+    
+    return redirect('noticias:detalle', pk=pk)

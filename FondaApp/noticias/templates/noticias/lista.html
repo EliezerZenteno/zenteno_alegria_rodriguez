@@ -18,6 +18,60 @@
         <h1><i class="fas fa-newspaper"></i> Noticias</h1>
     </div>
 
+    <!-- Filtros -->
+    <div class="noticias-filtros">
+        <form method="get" action="{% url 'noticias:lista' %}" class="filtros-form">
+            <div class="filtro-grupo">
+                <label for="categoria"><i class="fas fa-filter"></i> Filtrar por categoría:</label>
+                <select name="categoria" id="categoria" class="form-control" onchange="this.form.submit()">
+                    <option value="">Todas las categorías</option>
+                    {% for categoria in categorias %}
+                        <option value="{{ categoria.id }}" {% if categoria_seleccionada == categoria.id|stringformat:"s" %}selected{% endif %}>
+                            {{ categoria.nombre }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            {% if categoria_seleccionada or busqueda or destacado %}
+                <div class="filtro-reset">
+                    <a href="{% url 'noticias:lista' %}" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Limpiar filtros
+                    </a>
+                </div>
+            {% endif %}
+        </form>
+        
+        <!-- Filtro rápido por categorías (pills) -->
+        <div class="categorias-pills">
+            <a href="{% url 'noticias:lista' %}" class="categoria-pill {% if not categoria_seleccionada %}active{% endif %}">
+                <i class="fas fa-th"></i> Todas
+            </a>
+            {% for categoria in categorias %}
+                <a href="?categoria={{ categoria.id }}" class="categoria-pill {% if categoria_seleccionada == categoria.id|stringformat:"s" %}active{% endif %}">
+                    <i class="fas fa-tag"></i> {{ categoria.nombre }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Información de resultados -->
+    {% if categoria_seleccionada %}
+        <div class="filtros-activos">
+            <p><i class="fas fa-info-circle"></i> 
+                Mostrando noticias de la categoría: 
+                <strong>
+                    {% for cat in categorias %}
+                        {% if cat.id|stringformat:"s" == categoria_seleccionada %}
+                            {{ cat.nombre }}
+                        {% endif %}
+                    {% endfor %}
+                </strong>
+                ({{ paginator.count }} resultado{{ paginator.count|pluralize }})
+            </p>
+        </div>
+    {% endif %}
+
     <!-- Grid de noticias -->
     {% if posteos %}
         <div class="noticias-grid">
@@ -30,6 +84,13 @@
                     {% endif %}
                     <div class="noticia-content">
                         <h2 class="noticia-title">{{ posteo.titulo }}</h2>
+                        {% if posteo.categoria %}
+                            <div class="noticia-categoria">
+                                <span class="categoria-badge">
+                                    <i class="fas fa-tag"></i> {{ posteo.categoria.nombre }}
+                                </span>
+                            </div>
+                        {% endif %}
                         <p class="noticia-excerpt">{{ posteo.contenido|truncatewords:20 }}</p>
                         <div class="noticia-meta">
                             <i class="fas fa-user"></i> {{ posteo.autor.username }}
@@ -50,7 +111,7 @@
             <nav class="noticias-pagination" aria-label="Navegación de páginas">
                 <ul class="pagination-list">
                     {% if page_obj.has_previous %}
-                        <li class="page-prev"><a href="?page={{ page_obj.previous_page_number }}" class="btn btn-secondary">&laquo; Anterior</a></li>
+                        <li class="page-prev"><a href="?page={{ page_obj.previous_page_number }}{% if categoria_seleccionada %}&categoria={{ categoria_seleccionada }}{% endif %}" class="btn btn-secondary">&laquo; Anterior</a></li>
                     {% else %}
                         <li class="page-prev disabled"><span class="btn btn-secondary disabled">&laquo; Anterior</span></li>
                     {% endif %}
@@ -59,12 +120,12 @@
                         {% if num == page_obj.number %}
                             <li class="page-number active"><span class="btn btn-primary">{{ num }}</span></li>
                         {% else %}
-                            <li class="page-number"><a href="?page={{ num }}" class="btn btn-light">{{ num }}</a></li>
+                            <li class="page-number"><a href="?page={{ num }}{% if categoria_seleccionada %}&categoria={{ categoria_seleccionada }}{% endif %}" class="btn btn-light">{{ num }}</a></li>
                         {% endif %}
                     {% endfor %}
 
                     {% if page_obj.has_next %}
-                        <li class="page-next"><a href="?page={{ page_obj.next_page_number }}" class="btn btn-secondary">Siguiente &raquo;</a></li>
+                        <li class="page-next"><a href="?page={{ page_obj.next_page_number }}{% if categoria_seleccionada %}&categoria={{ categoria_seleccionada }}{% endif %}" class="btn btn-secondary">Siguiente &raquo;</a></li>
                     {% else %}
                         <li class="page-next disabled"><span class="btn btn-secondary disabled">Siguiente &raquo;</span></li>
                     {% endif %}
