@@ -241,6 +241,7 @@
             <li><a href="/sobrenosotros/" class="sobrenosotros-link">Sobre Nosotros</a></li>
             <li><a href="/recetas/" class="recetas-link active">Recetas</a></li>
             <li><a href="/noticias/" class="noticias-link">Noticias</a></li>
+            <li><a href="{% url 'contacto:contacto' %}" class="contacto-link {% if 'contacto' in request.resolver_match.app_name %}active{% endif %}">Contactanos</a></li>
         </ul>
     </nav>
     <!-- Banner principal -->
